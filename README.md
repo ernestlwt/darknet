@@ -1,3 +1,20 @@
+# Instructions
+
+1. Build container
+```
+docker build -f docker/Dockerfile -t ernestlwt/yolov4:tiny .
+```
+
+2. Run container
+```
+docker run --rm --name yolov4-tiny -it -v /home/ernestlwt/data/coco/:/data/ -v /home/ernestlwt/workspace/github/darknet/config/:/yolo/config/ --shm-size=64g ernestlwt/yolov4:tiny
+```
+
+Mounts required:
+- dataset should be mounted to `/data/`
+- configuration folder should be mounted to `/yolo/config/`. Required configuration files can be found in `darknet/config`
+
+---
 # Yolo v4, v3 and v2 for Windows and Linux
 
 ## (neural networks for object detection)
