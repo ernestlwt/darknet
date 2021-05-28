@@ -14,6 +14,13 @@ COPY ./Makefile /yolo/.
 
 RUN make
 
+COPY ./server/requirements.txt /yolo/server/requirements.txt
+
+RUN pip install -r /yolo/server/requirements.txt
+
+COPY ./server /yolo/server
+EXPOSE 8000
+
 COPY ./cfg      /yolo/cfg
 COPY ./weights  /yolo/weights
 COPY ./*.py     /yolo/

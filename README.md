@@ -7,12 +7,13 @@ docker build -f docker/Dockerfile -t ernestlwt/yolov4:tiny .
 
 2. Run container
 ```
-docker run --rm --name yolov4-tiny -it -v /home/ernestlwt/data/coco/:/data/ -v /home/ernestlwt/workspace/github/darknet/config/:/yolo/config/ --shm-size=64g ernestlwt/yolov4:tiny
+docker run --rm --name yolov4-tiny --net=host -e YOLO_MODE="serve" -v /home/ernestlwt/data/coco/:/data/ -v /home/ernestlwt/workspace/github/darknet/config/:/yolo/config/ --shm-size=64g ernestlwt/yolov4:tiny
 ```
 
-Mounts required:
+Variables to note:
 - dataset should be mounted to `/data/`
 - configuration folder should be mounted to `/yolo/config/`. Required configuration files can be found in `darknet/config`
+- set environment variable `YOLO_MODE` to `train`, `valid`, `serve`
 
 ---
 # Yolo v4, v3 and v2 for Windows and Linux
